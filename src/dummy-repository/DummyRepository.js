@@ -1,0 +1,80 @@
+import { todos } from "../dummy-values/todos"
+import { users } from "../dummy-values/users"
+
+export const DummyRepository = {
+    login: (user) => {
+        return new Promise((resolve, reject) => {
+            const userInUsers = users.find(u => u.email === user.email && u.password === user.password)
+            if (userInUsers != null) {
+                resolve({
+                    ok: true,
+                    data: {
+                        name: userInUsers.name,
+                        surname: userInUsers.surname,
+                        email: userInUsers.email
+                    },
+                    error: null
+                })
+            } else {
+                reject({
+                    ok: false,
+                    data: null,
+                    error: 'User not found'
+                })
+            }
+        })
+    },
+    addTodo: (todo) => {
+        return new Promise((resolve, reject) => {
+            todos.push(todo)
+            resolve({
+                ok: true,
+                data: todos,
+                error: null
+            })
+        })
+    },
+    updateTodo: (todoUpdated) => {
+        return new Promise((resolve, reject) => {
+            const todoInTodosIdx = todos.findIndex(todo => todo.uuid === todoUpdated.uuid)
+            if (todoInTodosIdx !== -1) {
+                const todoInTodos = todoInTodosIdx[todoInTodosIdx]
+                todoInTodosIdx[todoInTodosIdx] = {
+                    ...todoInTodos,
+                    description: todoUpdated.description,
+                    photo: todoUpdated.photo,
+                    dueDate: todoUpdated.dueDate,
+                    completed: todoUpdated.completed
+                }
+                resolve({
+                    ok: true,
+                    data: todos,
+                    error: null
+                })
+            } else {
+                reject({
+                    ok: false,
+                    data: null,
+                    error: 'Could not update todo'
+                })
+            }
+        })
+    },
+    deleteTodo: (uuid) => {
+        return new Promise((resolve, reject) => {
+            const todoInTodosIdx = todos.findIndex(todo => todo.uuid === todoUpdated.uuid)
+            if (todoInTodosIdx !== -1) {
+                todos.splice(todoInTodosIdx, 1)
+                resolve({
+                    ok: true,
+                    error: null
+                })
+            } else {
+                reject({
+                    ok: false,
+                    error: 'Could not delete todo'
+                })
+            }
+        })
+    }
+}
