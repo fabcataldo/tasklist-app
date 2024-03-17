@@ -30,7 +30,6 @@ const LoginPage = () => {
     const onSubmit = (event) => {
         event.preventDefault();
         dispatch(login({
-            type: '[Auth] Login',
             payload: {
                 email,
                 password

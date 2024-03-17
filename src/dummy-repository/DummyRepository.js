@@ -39,11 +39,6 @@ export const DummyRepository = {
             const todoInTodosIdx = todos.data.findIndex(todo => todo.uuid === uuid)
             if (todoInTodosIdx !== -1) {
                 const todoInTodos = {...todos.data[todoInTodosIdx]}
-                console.log('todos[todoInTodos]')
-                console.log(todoInTodos)
-                console.log(todos)
-                console.log(newState)
-
                 todoInTodos.completed = newState
                 resolve({
                     ok: true,
@@ -63,14 +58,14 @@ export const DummyRepository = {
         return new Promise((resolve, reject) => {
             const todoInTodosIdx = todos.data.findIndex(todo => todo.uuid === todoUpdated.uuid)
             if (todoInTodosIdx !== -1) {
-                const todoInTodos = todos.data[todoInTodosIdx]
+                const todoInTodos = {...todos.data[todoInTodosIdx]}
                 todoInTodos.description = todoUpdated.description
                 todoInTodos.photo = todoUpdated.photo
                 todoInTodos.dueDate = todoUpdated.dueDate
                 todoInTodos.completed = todoUpdated.completed
                 resolve({
                     ok: true,
-                    data: todos,
+                    data: todoInTodos,
                     error: null
                 })
             } else {

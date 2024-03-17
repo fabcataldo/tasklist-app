@@ -4,5 +4,8 @@ export const commonStringValues = {
         completedPlaceholder: 'Is the task completed?',
         emailPlaceholder: 'Email',
         passswordPlaceholder: 'Password',
+    },
+    title: {
+        app: 'TaskList App'
     }
 }

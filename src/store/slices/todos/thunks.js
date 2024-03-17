@@ -17,9 +17,22 @@ export const addTodo = (action) => {
 export const updateTodo = (action) => {
     return async (dispatch, getState) => {
         dispatch(startTodoRequest())
+        const currentTodosList = getState().todos.todos
         const response = await DummyRepository.updateTodo(action.payload)
         dispatch(setTodos({
-            todos: response.data.todos,
+            todos: currentTodosList.map(todo => {
+                if(todo.uuid === response.data.uuid) {
+                    return {
+                        ...todo,
+                        completed: response.data.completed,
+                        description:  response.data.description,
+                        photo: response.data.photo,
+                        dueDate: response.data.dueDate
+                    }
+                } else {
+                    return todo
+                }
+            }),
             currentTodo: null,
             loading: false,
             error: response.error
