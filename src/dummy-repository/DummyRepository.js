@@ -45,10 +45,9 @@ export const DummyRepository = {
                 console.log(newState)
 
                 todoInTodos.completed = newState
-                todos.data[todoInTodosIdx] = todoInTodos
                 resolve({
                     ok: true,
-                    data: todos,
+                    data: todoInTodos,
                     error: null
                 })
             } else {
