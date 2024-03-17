@@ -4,7 +4,7 @@ import { todos } from '../../../dummy-values/todos'
 export const todosSlice = createSlice({
     name: 'todos',
     initialState: {
-        todos: todos,
+        todos: todos.data,
         currentTodo: null,
         loading: false,
         error: null

@@ -4,6 +4,7 @@ import List from './components/List/List'
 
 const TodoList = () => {
     const { todos } = useSelector((state) => state.todos)
+
     return (
         <div className={styles.container}>
             <List items={todos}></List>

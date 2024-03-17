@@ -1,14 +1,16 @@
-import {switchSlider, slider, round } from './SwitchSlider.module.scss'
+import styles from './SwitchSlider.module.scss'
 
-const SwitchSlider = ({value, setValue}) => {
+const SwitchSlider = ({ value, setValue, label }) => {
     return (
-        <>
-            <label className={switchSlider}>
-                <input type="checkbox" value={value} onClick={setValue}></input>
-                <span className={slider} {...round}></span>
-            </label>
-
-        </>
+        <div>
+            <div>
+                {label}
+            </div>
+            <label className={styles.switchSlider}>
+                <input type="checkbox" defaultChecked={value} onClick={event => setValue(event.target.checked)}></input>
+                <span className={`${styles.slider} ${styles.round}`}></span>
+            </label >
+        </div>
     )
 }
 

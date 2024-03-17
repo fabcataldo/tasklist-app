@@ -2,10 +2,8 @@ import ListItem from "./Item/Item"
 import styles from './List.module.scss'
 import NoData from '../../../../components/NoData/NoData'
 
-
 const List = ({items}) => {
-    console.log('items')
-    console.log(items)
+
     return (
         <>
             {
@@ -13,7 +11,7 @@ const List = ({items}) => {
                 ? <NoData></NoData>
                 : items.map( item => {
                     return (
-                        <div className={styles.containerList}>
+                        <div className={styles.containerList} key={item.uuid}>
                             <ListItem item={item}></ListItem>
                         </div>
                     )

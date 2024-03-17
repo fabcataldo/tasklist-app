@@ -1,16 +1,16 @@
-export const todos = [
+export const todos = {data: [
     {
         uuid: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
         description: 'task description 1',
         dueDate: new Date('2024-02-28').toLocaleString(),
         completed: false,
-        photo: ''
+        photo: '../../assets/imgs/default-tasks/clean.png'
     },
     {
         uuid: '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed',
         description: 'task description 2',
         dueDate: new Date('2024-03-16').toLocaleString(),
-        completed: false,
+        completed: true,
         photo: ''
     },
     {
@@ -27,4 +27,4 @@ export const todos = [
         completed: false,
         photo: ''
     },
-]
+]}

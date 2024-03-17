@@ -16,6 +16,14 @@
     font-weight: 300;
 }
 
-.todoDescription {
+.fullPage {
+    width: 100vw;
+    height: 100vh;
+}
 
+.flexCenterCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

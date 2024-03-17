@@ -27,6 +27,23 @@ export const updateTodo = (action) => {
     }
 }
 
+export const updateStateTodo = (action) => {
+    console.log('action')
+    console.log(action)
+    return async (dispatch, getState) => {
+        dispatch(startTodoRequest())
+        const response = await DummyRepository.updateStateTodo(action.payload.uuid, action.payload.completed)
+        dispatch(setTodos({
+            todos: response.data.todos,
+            currentTodo: null,
+            loading: false,
+            error: response.error
+        }))
+    }
+}
+
+
+
 export const deleteTodo = (action) => {
     return async (dispatch, getState) => {
         dispatch(startTodoRequest())
