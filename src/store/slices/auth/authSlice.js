@@ -17,8 +17,6 @@ export const authSlice = createSlice({
             state.loading = true;
         },
         setUserLogged: (state, action) => {
-            console.log('acton')
-            console.log(action)
             state.user = action.payload.user
             state.autenticated = action.payload.autenticated
             state.loading = action.payload.loading

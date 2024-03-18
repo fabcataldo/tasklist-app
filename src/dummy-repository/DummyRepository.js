@@ -26,10 +26,11 @@ export const DummyRepository = {
     },
     addTodo: (todo) => {
         return new Promise((resolve, reject) => {
-            todos.data.push(todo)
+            const todosTmp = [...todos.data]
+            todosTmp.push(todo)
             resolve({
                 ok: true,
-                data: todos,
+                data: todosTmp,
                 error: null
             })
         })
@@ -81,9 +82,11 @@ export const DummyRepository = {
         return new Promise((resolve, reject) => {
             const todoInTodosIdx = todos.data.findIndex(todo => todo.uuid === uuid)
             if (todoInTodosIdx !== -1) {
-                todos.data.splice(todoInTodosIdx, 1)
+                const todosTmp = [...todos.data]
+                todosTmp.splice(todoInTodosIdx, 1)
                 resolve({
                     ok: true,
+                    data: todosTmp,
                     error: null
                 })
             } else {

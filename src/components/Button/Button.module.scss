@@ -3,11 +3,11 @@
     --buttonTextColor: white;
 }
 
-button {
+.button {
     background-color: var(--buttonBg);
     color: var(--buttonTextColor);
     padding: 10px;
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid var(--buttonBg);
     border-radius: 10px;
 }

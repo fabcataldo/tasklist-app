@@ -2,9 +2,12 @@ import SwitchSlider from '../../../../../components/SwitchSlider/SwitchSlider'
 import { todoItemDateFormatter } from '../../../../../utils/todoItemDateFormatter'
 import styles from './Item.module.scss'
 import { useDispatch } from "react-redux";
-import { updateStateTodo } from "../../../../../store/slices/todos/thunks";
-import Button from '../../../../../components/Button/Button';
+import { deleteTodo, updateStateTodo } from "../../../../../store/slices/todos/thunks";
 import { useNavigate } from "react-router-dom";
+import commonStyles from '../../../../../styles/CommonStyles.module.scss';
+import deleteIcon from '../../../../../assets/imgs/delete.png';
+import editIcon from '../../../../../assets/imgs/edit.png';
+import Button from '../../../../../components/Button/Button';
 
 const ListItem = ({ item }) => {
     const navigate = useNavigate();
@@ -14,8 +17,16 @@ const ListItem = ({ item }) => {
         dispatch(updateStateTodo({payload: {uuid: todoUuid, completed: newTodoState}}))
     }
 
-    const handleClick = (todo) => {
+    const goToDetail = (todo) => {
         navigate('/todo', { state: { todo }})
+    }
+
+    const goToUpdate = (todo) => {
+        navigate('/add-update-todo', { state: { todo }})
+    }
+
+    const goToDelete = (todo) => {
+        dispatch(deleteTodo({payload: {uuid: todo.uuid}}))
     }
 
     return (
@@ -23,11 +34,11 @@ const ListItem = ({ item }) => {
             {
                 item &&
                 <div className={`${styles.container} ${styles.customShadow}`}>
-                    <div>
-                        <div className={styles.description}>
+                    <div className={styles.subItem}>
+                        <div className={`${commonStyles.textOnly} ${styles.description}`} >
                             {item.description}
                         </div>
-                        <div className={styles.dueDate}>
+                        <div className={`${commonStyles.textOnly} ${styles.dueDate}`} >
                             Due date: <span className={styles.dueDate}>{todoItemDateFormatter(item.dueDate)}</span>
                         </div>
                         <div className={styles.completed}>
@@ -35,17 +46,26 @@ const ListItem = ({ item }) => {
                         </div>
                     </div>
                     
-                    <div>
-                        <Button handleClick={() => handleClick(item)} label='See detail'></Button>
+                    <div className={styles.subItem}>
+                        <Button type='secondary' handleClick={() => goToDetail(item)} label='See detail'></Button>
                     </div>
-                    <div>
+
+                    <div className={`${styles.subItem} ${styles.actionButtons}`}>
+                        <div className={commonStyles.containerIconBtn}>
+                            <img src={editIcon} onClick={() => goToUpdate(item)} alt="charging update button..."></img>
+                        </div>
+
+                        <div className={commonStyles.containerIconBtn}>
+                            <img src={deleteIcon} onClick={() => goToDelete(item)} alt="charging delete button..."></img>
+                        </div>
+                    </div>
+
+                    <div className={styles.subItem}>
                         <SwitchSlider
                             value={item.completed}
                             label='Completed'
                             setValue={
                                 (value) => {
-                                    console.log('value')
-                                    console.log(value)
                                     changeTodoState(item.uuid, value)
                                 }
                             }>

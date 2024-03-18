@@ -5,8 +5,10 @@ export const addTodo = (action) => {
     return async (dispatch, getState) => {
         dispatch(startTodoRequest())
         const response = await DummyRepository.addTodo(action.payload)
+        console.log('response')
+        console.log(response)
         dispatch(setTodos({
-            todos: response.data.todos,
+            todos: [...response.data],
             currentTodo: null,
             loading: false,
             error: response.error
@@ -41,11 +43,7 @@ export const updateTodo = (action) => {
 }
 
 export const updateStateTodo = (action) => {
-    console.log('action')
-    console.log(action)
     return async (dispatch, getState) => {
-        console.log('getState')
-        console.log(getState())
         const currentTodosList = getState().todos.todos
         dispatch(startTodoRequest())
         const response = await DummyRepository.updateStateTodo(action.payload.uuid, action.payload.completed)
@@ -72,9 +70,9 @@ export const updateStateTodo = (action) => {
 export const deleteTodo = (action) => {
     return async (dispatch, getState) => {
         dispatch(startTodoRequest())
-        const response = await DummyRepository.deleteTodo(action.payload)
+        const response = await DummyRepository.deleteTodo(action.payload.uuid)
         dispatch(setTodos({
-            todos: response.data.todos,
+            todos: [...response.data],
             currentTodo: null,
             loading: false,
             error: response.error

@@ -4,22 +4,20 @@ import styles from './TodoDetail.module.scss'
 
 const TodoDetail = () => {
     let location = useLocation();
-    console.log('location')
-    console.log(location)
     const todo = location.state.todo;
 
     return (
-        <div>
-            <div>
-                <img src={todo.photo} alt='charging icon todo...'></img>
-            </div>
+        <div className={styles.container}>
             <div className={styles.description}>
+                <span className={styles.fieldData}>Description</span>:
                 {todo.description}
             </div>
             <div className={styles.dueDate}>
-                Due date: <span className={styles.dueDate}>{todoItemDateFormatter(todo.dueDate)}</span>
+                <span className={styles.fieldData}>Due date</span>:
+                <span className={styles.dueDate}>{todoItemDateFormatter(todo.dueDate)}</span>
             </div>
             <div className={styles.completed}>
+                <span className={styles.fieldData}>Completed</span>:
                 {todo.completed}
             </div>
         </div>

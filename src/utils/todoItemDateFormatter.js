@@ -1,3 +1,3 @@
 export function todoItemDateFormatter(date){
-    return date.slice(0, 9)
+    return date.slice(0, 10)
 }

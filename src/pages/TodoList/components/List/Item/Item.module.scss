@@ -5,6 +5,14 @@
     align-items: center;
     margin-bottom: 1rem;
     border-radius: .5rem;
+
+    .subItem{
+        width: 25%;
+
+        &.actionButtons{
+            display: flex;
+        }
+    }
 }
 
 .customShadow {

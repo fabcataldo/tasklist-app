@@ -6,9 +6,9 @@ import Input from '../../components/Input/Input'
 import { commonStringValues } from "../../utils/commonStringValues";
 import { login } from '../../store/slices/auth'
 import commonStyles from '../../styles/CommonStyles.module.scss'
-import styles from './LoginPage.module.scss'
 import { useEffect, useState } from "react";
 import ToastBootstrap from "../../components/ToastBootstrap/ToastBootstrap";
+import formStyles from '../../styles/forms.module.scss';
 
 const LoginPage = () => {
     const { auth } = useSelector(state => state)
@@ -50,10 +50,10 @@ const LoginPage = () => {
                 msg={auth.error}
                 active={activeToastLoginError}>
             </ToastBootstrap>
-            <div className={`${commonStyles.flexCenterCenter} ${commonStyles.fullPage} ${commonStyles.generalText}`}>
-                <div className={commonStyles.title}>Welcome to TaskList App!</div>
-                <form>
-                    <div className={styles.containerInput}>
+            <div className={`${commonStyles.flexCenterCenter} ${commonStyles.fullPage}`}>
+                <div className={commonStyles.title}>{commonStringValues.title.loginWelcome}</div>
+                <div>
+                    <div className={formStyles.containerInput}>
                         <Input
                             value={email}
                             placeholder={commonStringValues.form.emailPlaceholder}
@@ -61,7 +61,7 @@ const LoginPage = () => {
                             onChange={onInputChange}
                         ></Input>
                     </div>
-                    <div className={styles.containerInput}>
+                    <div className={formStyles.containerInput}>
                         <Input
                             value={password}
                             placeholder={commonStringValues.form.passswordPlaceholder}
@@ -70,9 +70,9 @@ const LoginPage = () => {
                         ></Input>
                     </div>
                     <div>
-                        <Button handleClick={onSubmit} label='Login'></Button>
+                        <Button type='primary' handleClick={onSubmit} label={commonStringValues.btn.login}></Button>
                     </div>
-                </form>
+                </div>
             </div>
 
         </>

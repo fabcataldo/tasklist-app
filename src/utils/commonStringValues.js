@@ -6,6 +6,10 @@ export const commonStringValues = {
         passswordPlaceholder: 'Password',
     },
     title: {
-        app: 'TaskList App'
+        app: 'TaskList App',
+        loginWelcome: 'Welcome to TaskList App!'
+    },
+    btn: {
+        login: 'Login'
     }
 }

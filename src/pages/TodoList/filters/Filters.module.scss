@@ -1,0 +1,17 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orderersFiltersContainer {
+    display: flex;
+
+    .subContainer{
+        padding: 0px 10px;
+    }
+}
+
+.buttonContainer {
+    padding: 5px 0px;
+}

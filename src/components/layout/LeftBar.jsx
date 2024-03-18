@@ -10,6 +10,9 @@ const LeftBar = () => {
     const doLogout = () => {
         dispatch(logout())
     }
+    
+    console.log('auth')
+    console.log(auth)
 
     return (
         <header className={styles.appHeader}>
