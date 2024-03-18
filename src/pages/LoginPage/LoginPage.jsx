@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm"
-import { useNavigate } from "react-router-dom";
 import Input from '../../components/Input/Input'
 import { commonStringValues } from "../../utils/commonStringValues";
 import { login } from '../../store/slices/auth'
 import commonStyles from '../../styles/CommonStyles.module.scss'
 import { useEffect, useState } from "react";
-import ToastBootstrap from "../../components/ToastBootstrap/ToastBootstrap";
 import formStyles from '../../styles/forms.module.scss';
+import FormMsgError from "../../components/FormMsgError/FormMsgError";
+import { setPageTitle } from "../../store/slices/app/appSlice";
 
 const LoginPage = () => {
     const { auth } = useSelector(state => state)
+    const { app } = useSelector(state => state)
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [activeToastLoginError, setActiveToastLoginError] = useState(false)
 
     useEffect(() => {
@@ -29,35 +29,33 @@ const LoginPage = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+        dispatch(setPageTitle({title: commonStringValues.title.app}))
         dispatch(login({
             payload: {
                 email,
                 password
             }
         }))
-        if (auth.autenticated === true) {
-            navigate('/')
-        } else {
+        
+        if (!auth.autenticated) {
             setActiveToastLoginError(true)
         }
     }
 
     return (
         <>
-            <ToastBootstrap
-                background='danger'
-                title='Error'
-                msg={auth.error}
-                active={activeToastLoginError}>
-            </ToastBootstrap>
-            <div className={`${commonStyles.flexCenterCenter} ${commonStyles.fullPage}`}>
+            {
+                activeToastLoginError &&
+                <FormMsgError msg={auth.error}></FormMsgError>
+            }
+            <div className={`${commonStyles.flexCenterCenter} ${commonStyles.flexColumn} ${commonStyles.fullPage}`}>
                 <div className={commonStyles.title}>{commonStringValues.title.loginWelcome}</div>
                 <div>
                     <div className={formStyles.containerInput}>
                         <Input
                             value={email}
                             placeholder={commonStringValues.form.emailPlaceholder}
-                            name='email'
+                            name={commonStringValues.user.data.email}
                             onChange={onInputChange}
                         ></Input>
                     </div>
@@ -65,7 +63,7 @@ const LoginPage = () => {
                         <Input
                             value={password}
                             placeholder={commonStringValues.form.passswordPlaceholder}
-                            name='password'
+                            name={commonStringValues.user.data.password}
                             onChange={onInputChange}
                         ></Input>
                     </div>

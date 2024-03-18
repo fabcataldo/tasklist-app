@@ -26,7 +26,7 @@ const Filters = ({ setCurrentTodos, currentTodos, origTodos }) => {
     return (
         <div className={styles.mainContainer}>
             <div className={styles.orderersFiltersContainer}>
-                <div className={styles.subContainer}>
+                <div className={`${styles.subContainer} ${commonStyles.flexCenterCenter} ${commonStyles.flexColumn}`} >
                     <div>Order by</div>
                     <div>
                         <div className={styles.buttonContainer}>
@@ -52,7 +52,7 @@ const Filters = ({ setCurrentTodos, currentTodos, origTodos }) => {
                         </div>
                     </div>
                 </div>
-                <div className={`${styles.subContainer} ${commonStyles.flexCenterCenter}`} >
+                <div className={`${styles.subContainer} ${commonStyles.flexCenterCenter} ${commonStyles.flexColumn}`} >
                     <div>Filter by</div>
                     <div>
                         <div className={styles.buttonContainer}>
@@ -74,7 +74,7 @@ const Filters = ({ setCurrentTodos, currentTodos, origTodos }) => {
             </div>
 
             <div>
-                <Button label='Clean filters and orderers' handleClick={() => setCurrentTodos(origTodos)}></Button>
+                <Button label={commonStringValues.btn.filtersOrderers.cleanBtn} handleClick={() => setCurrentTodos(origTodos)}></Button>
             </div>
         </div>
     )

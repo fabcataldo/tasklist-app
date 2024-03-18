@@ -4,42 +4,56 @@ import styles from './TaskList.module.scss'
 import List from './components/List/List'
 import Filters from './filters/Filters';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import commonStyles from '../../styles/CommonStyles.module.scss'
 import { commonStringValues } from '../../utils/commonStringValues';
+import { setPageTitle } from '../../store/slices/app/appSlice';
 
 const TaskList = () => {
     const { todos } = useSelector((state) => state.todos)
     const [currentTodos, setCurrentTodos] = useState(todos)
     const navigate = useNavigate();
+    const [showOrderersFilters, setShowOrderersFilters] = useState(false)
+    const dispatch = useDispatch();
 
-    useEffect(()=> {
+    useEffect(() => {
         setCurrentTodos(todos)
-
-        console.log('todos')
-        console.log(todos)
     }, [todos])
 
     const goToNewTask = () => {
+        dispatch(setPageTitle({title: commonStringValues.title.addNewTaskPage}))
         navigate('/add-update-todo')
     }
 
     return (
         <div>
-            <div className={`${commonStyles.flexCenterCenter} ${styles.addButtonContainer}`}>
+            <div className={`${commonStyles.flexCenterCenter} ${styles.additionalBtn}`}>
                 <Button type={commonStringValues.btn.type.secondary} handleClick={() => goToNewTask()} label={commonStringValues.btn.addNewTask}></Button>
             </div>
-            <div>
-                <Filters 
-                    setCurrentTodos={setCurrentTodos}
-                    currentTodos={currentTodos}
-                    origTodos={todos}>
-                </Filters>
-                <main>
-                    <List items={currentTodos}></List>
-                </main>
+            <div className={`${commonStyles.flexCenterCenter} ${styles.additionalBtn}`}>
+                <Button
+                    type={commonStringValues.btn.type.secondary}
+                    handleClick={() => { setShowOrderersFilters(!showOrderersFilters) }}
+                    label={
+                        showOrderersFilters
+                            ? commonStringValues.btn.filtersOrderers.hideFilterOrder
+                            : commonStringValues.btn.filtersOrderers.showFilterOrder
+                    }>
+                </Button>
             </div>
-
+            {
+                showOrderersFilters
+                && <div className={styles.filtersOrderersContainer}>
+                    <Filters
+                        setCurrentTodos={setCurrentTodos}
+                        currentTodos={currentTodos}
+                        origTodos={todos}>
+                    </Filters>
+                </div>
+            }
+            <div>
+                <List items={currentTodos}></List>
+            </div>
         </div>
     )
 }

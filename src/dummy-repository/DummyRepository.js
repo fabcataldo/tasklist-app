@@ -64,8 +64,6 @@ export const DummyRepository = {
                 todoInTodos.dueDate = todoUpdated.dueDate
                 todoInTodos.completed = todoUpdated.completed
 
-                console.log('todo in todos')
-                console.log(todoInTodos)
                 resolve({
                     ok: true,
                     data: todoInTodos,

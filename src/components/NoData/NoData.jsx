@@ -1,9 +1,10 @@
 import styles from './NoData.module.scss'
+import commonStyles from '../../styles/CommonStyles.module.scss'
 
 const NoData = () => {
     return (
         <>
-            <div className={styles.msg}>No todos found. Create a new one!</div>
+            <div className={`${commonStyles.flexCenterCenter} ${styles.msg}`} >No todos found. Create a new one!</div>
         </>
     )
 }

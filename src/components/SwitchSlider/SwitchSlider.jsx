@@ -3,7 +3,7 @@ import commonStyles from '../../styles/CommonStyles.module.scss'
 
 const SwitchSlider = ({ value, setValue, label }) => {
     return (
-        <div className={commonStyles.flexCenterCenter}>
+        <div className={`${commonStyles.flexCenterCenter} ${commonStyles.flexColumn}`}>
             <div>
                 {label}
             </div>

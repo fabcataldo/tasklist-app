@@ -1,21 +1,19 @@
 @import '../../styles/variables.module.scss';
 
 .button {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid var(--light-grey);
-    border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid var(--lightGrey);
+        border-radius: 10px;
 }
 
 .btnPrimary {
-        background-color: var(--light-grey);
-        color: var(--btnPrimaryTextColor);
+        background-color: var(--lightGrey);
+        color: var(--white);
 
 }
 
 .btnSecondary {
-
-        background-color: var(--btnSecondaryBg);
-        color: var(--btnSecondaryTextColor);
-
+        background-color: var(--white);
+        color: var(--black);
 }

@@ -7,7 +7,10 @@ export const commonStringValues = {
     },
     title: {
         app: 'TaskList App',
-        loginWelcome: 'Welcome to TaskList App!'
+        loginWelcome: 'Welcome to TaskList App!',
+        detailsPage: 'Details of the task',
+        addNewTaskPage: 'Add new task',
+        editTaskPage: 'Edit task',
     },
     btn: {
         login: 'Login',
@@ -21,7 +24,10 @@ export const commonStringValues = {
             filterBy: {
                 completed: 'Completed',
                 incompleted: 'Incompleted'
-            }
+            },
+            showFilterOrder: 'Show orderers/filters',
+            hideFilterOrder: 'Hide orderers/filters',
+            cleanBtn: 'Clean all'
         },
         type: {
             primary: 'primary',
@@ -39,6 +45,12 @@ export const commonStringValues = {
         },
         label: {
             state: 'Completed'
+        }
+    },
+    user: {
+        data: {
+            email: 'email',
+            password: 'password'
         }
     }
 }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addTodo, updateTodo } from '../../store/slices/todos/thunks';
 import Form from './components/Form/Form';
-import ToastBootstrap from '../../components/ToastBootstrap/ToastBootstrap';
+import FormMsgError from '../../components/FormMsgError/FormMsgError';
 
 const TodoAddUpdate = () => {
     const { todos } = useSelector(state => state)
@@ -46,12 +46,10 @@ const TodoAddUpdate = () => {
 
     return (
         <>
-            <ToastBootstrap
-                background='danger'
-                title='Error'
-                msg={todos.error}
-                active={activeToastLoginError}>
-            </ToastBootstrap>
+            {
+                activeToastLoginError && 
+                <FormMsgError msg={todos.error}></FormMsgError>
+            }
             <Form onSubmit={onSubmit} todo={currentTodo}></Form>
         </>
 

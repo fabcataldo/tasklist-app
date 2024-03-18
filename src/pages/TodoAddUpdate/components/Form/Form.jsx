@@ -25,8 +25,7 @@ const Form = ({ todo, onSubmit }) => {
 
     const onSubmitting = () => {
         setIsMandatoryFieldEmpty(!formState.description)
-        console.log(!formState.description)
-        console.log(isMandatoryFieldEmpty)
+
         if (!isMandatoryFieldEmpty && formState.description){
             onSubmit(formState)
         }
@@ -34,7 +33,7 @@ const Form = ({ todo, onSubmit }) => {
 
     return (
         <>
-            <div className={commonStyles.flexCenterCenter}>
+            <div className={`${commonStyles.flexCenterCenter} ${commonStyles.flexColumn}`}>
                 <div className={formStyles.containerInput}>
                     <DatePicker
                         locale="es"

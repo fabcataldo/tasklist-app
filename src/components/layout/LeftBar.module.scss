@@ -1,28 +1,24 @@
 @import '../../styles/variables.module.scss';
 
-.appHeader {
+.container {
+    background: var(--grey);
     display: flex;
-    justify-content: space-between;
     background-color: var(--grey);
-    padding: 4rem;
+    padding: 1rem;
     flex-direction: column;
 }
 
 .username {
-    color: var(--leftBarColor);
-    font-size: 2.2rem;
-    margin: 0;
+    color: var(--white);
 }
 
 .username span {
     font-weight: 900;
+    padding-left: 5px;
 }
 
-.mainNav a {
-    color: var(--leftBarColor);
-    text-decoration: none;
-}
-
-.mainNav a:first-of-type {
-    margin-right: 2rem;
+.closeSessionBtn {
+    color: var(--white);
+    padding: 30px 0px;
+    text-decoration: underline;
 }

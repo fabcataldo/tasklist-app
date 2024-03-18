@@ -9,6 +9,7 @@ import deleteIcon from '../../../../../assets/imgs/delete.png';
 import editIcon from '../../../../../assets/imgs/edit.png';
 import Button from '../../../../../components/Button/Button';
 import { commonStringValues } from '../../../../../utils/commonStringValues';
+import { setPageTitle } from '../../../../../store/slices/app/appSlice';
 
 const ListItem = ({ item }) => {
     const navigate = useNavigate();
@@ -19,10 +20,12 @@ const ListItem = ({ item }) => {
     }
 
     const goToDetail = (todo) => {
+        dispatch(setPageTitle({title: commonStringValues.title.detailsPage}))
         navigate('/todo', { state: { todo }})
     }
 
     const goToUpdate = (todo) => {
+        dispatch(setPageTitle({title: commonStringValues.title.editTaskPage}))
         navigate('/add-update-todo', { state: { todo }})
     }
 
@@ -51,7 +54,7 @@ const ListItem = ({ item }) => {
                         <Button type={commonStringValues.btn.type.secondary} handleClick={() => goToDetail(item)} label='See detail'></Button>
                     </div>
 
-                    <div className={`${styles.subItem} ${styles.actionButtons}`}>
+                    <div className={`${styles.subItem} ${styles.actionButtons} ${commonStyles.flexCenterCenter}`}>
                         <div className={commonStyles.containerIconBtn}>
                             <img src={editIcon} onClick={() => goToUpdate(item)} alt="charging update button..."></img>
                         </div>

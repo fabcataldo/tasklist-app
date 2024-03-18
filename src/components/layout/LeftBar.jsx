@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './LeftBar.module.scss'
-import Button from '../Button/Button';
-import {logout} from '../../store/slices/auth'
-import { commonStringValues } from '../../utils/commonStringValues';
+import { logout } from '../../store/slices/auth'
 
 const LeftBar = () => {
     const { auth } = useSelector(state => state)
@@ -11,20 +9,23 @@ const LeftBar = () => {
     const doLogout = () => {
         dispatch(logout())
     }
-    
-    console.log('auth')
-    console.log(auth)
 
     return (
-        <header className={styles.appHeader}>
-            {auth.autenticated ?
-                <p className={styles.username}> Hello <span>{auth.user.name} {auth.user.surname}</span></p>
-                    : null}
+        <div className={styles.container}>
+            <div>
+                {auth.autenticated ?
+                    <div className={styles.username}> Hello
+                        <span>{auth.user.name} {auth.user.surname}</span>
+                    </div>
+                    : null
+                }
+            </div>
 
-            <nav className={styles.mainNav}>
-                <Button type={commonStringValues.btn.type.secondary} handleClick={doLogout} label='Close session'></Button>
-            </nav>
-        </header>
+
+            <div onClick={doLogout} className={styles.closeSessionBtn}>Close session</div>
+
+        </div>
+
     )
 }
 

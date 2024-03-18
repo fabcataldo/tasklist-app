@@ -2,7 +2,7 @@
 
 .completeSidebar {
     display: flex;
-    border: 1px solid var(--leftBarColor);
+    border: 1px solid var(--white);
     background: var(--grey);
     align-items: center;
     padding: 0px 10px;
@@ -22,12 +22,9 @@
         width: 100%;
         height: 100%;
     }
-
-    .backLeftBar {
-        background: var(--grey);
-        width: 100%;
-        height: 100%;
-    }    
 }
 
-
+.titleApp {
+    color: var(--white);
+    padding-left: 15px;
+}
