@@ -28,7 +28,6 @@ export const updateTodo = (action) => {
                         ...todo,
                         completed: response.data.completed,
                         description:  response.data.description,
-                        photo: response.data.photo,
                         dueDate: response.data.dueDate
                     }
                 } else {

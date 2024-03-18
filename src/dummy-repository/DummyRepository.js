@@ -61,7 +61,6 @@ export const DummyRepository = {
             if (todoInTodosIdx !== -1) {
                 const todoInTodos = {...todos.data[todoInTodosIdx]}
                 todoInTodos.description = todoUpdated.description
-                todoInTodos.photo = todoUpdated.photo
                 todoInTodos.dueDate = todoUpdated.dueDate
                 todoInTodos.completed = todoUpdated.completed
                 resolve({

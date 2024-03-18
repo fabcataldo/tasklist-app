@@ -26,8 +26,7 @@ const TodoAddUpdate = () => {
                 uuid: form.uuid,
                 description: form.description,
                 dueDate: form.dueDate,
-                completed: form.completed,
-                photo: form.photo
+                completed: form.completed
             }
         }
         if (currentTodo !== null) {

@@ -16,8 +16,7 @@ const Form = ({ todo, onSubmit }) => {
         uuid: todo ? todo.uuid : uuidv4(),
         description: todo ? todo.description : '',
         dueDate: todo ? todo.dueDate : new Date().toISOString().slice(0,9),
-        completed: todo ? todo.completed : '',
-        photo: todo ? todo.photo : ''
+        completed: todo ? todo.completed : ''
     })
 
     return (
