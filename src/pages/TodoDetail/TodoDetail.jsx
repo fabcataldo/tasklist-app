@@ -9,15 +9,19 @@ const TodoDetail = () => {
 
     return (
         <div className={`${styles.container} ${commonStyles.flexCenterCenter} ${commonStyles.flexColumn}`}>
-            <div className={styles.description}>
+            <div className={styles.fieldTitle}>
+                <span className={styles.fieldData}>Title</span>:
+                {todo.title}
+            </div>
+            <div className={styles.fieldTitle}>
                 <span className={styles.fieldData}>Description</span>:
                 {todo.description}
             </div>
-            <div className={styles.dueDate}>
+            <div className={styles.fieldTitle}>
                 <span className={styles.fieldData}>Due date</span>:
                 <span className={styles.dueDate}>{todoItemDateFormatter(todo.dueDate)}</span>
             </div>
-            <div className={styles.completed}>
+            <div className={styles.fieldTitle}>
                 <span className={styles.fieldData}>Status</span>:
                 {todo.completed ? 'Completed' : 'Incompleted'}
             </div>

@@ -60,6 +60,7 @@ export const DummyRepository = {
             const todoInTodosIdx = currentTodos.findIndex(todo => todo.uuid === todoUpdated.uuid)
             if (todoInTodosIdx !== -1) {
                 const todoInTodos = {...currentTodos[todoInTodosIdx]}
+                todoInTodos.title = todoUpdated.title
                 todoInTodos.description = todoUpdated.description
                 todoInTodos.dueDate = todoUpdated.dueDate
                 todoInTodos.completed = todoUpdated.completed

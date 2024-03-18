@@ -24,6 +24,7 @@ const TodoAddUpdate = () => {
         const payload = {
             payload: {
                 uuid: form.uuid,
+                title: form.title,
                 description: form.description,
                 dueDate: form.dueDate,
                 completed: form.completed

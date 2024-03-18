@@ -39,8 +39,8 @@ const ListItem = ({ item }) => {
                 item &&
                 <div className={`${styles.container} ${styles.customShadow}`}>
                     <div className={styles.subItem}>
-                        <div className={`${commonStyles.textOnly} ${styles.description}`} >
-                            {item.description}
+                        <div className={`${commonStyles.textOnly} ${styles.title}`} >
+                            {item.title}
                         </div>
                         <div className={`${commonStyles.textOnly} ${styles.dueDate}`} >
                             Due date: <span className={styles.dueDate}>{todoItemDateFormatter(item.dueDate)}</span>

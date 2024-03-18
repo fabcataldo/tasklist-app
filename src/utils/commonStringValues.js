@@ -1,5 +1,6 @@
 export const commonStringValues = {
     form: {
+        titlePlaceholder: 'Title of the task',
         descriptionPlaceholder: 'Description of the task',
         completedPlaceholder: 'Is the task completed?',
         emailPlaceholder: 'Email',
@@ -35,13 +36,14 @@ export const commonStringValues = {
         }
     },
     msg: {
-        error: 'Description is mandatory'
+        error: 'Title is mandatory'
     },
     todo: {
         data: {
             description: 'description',
             dueDate: 'dueDate',
-            state: 'completed'
+            state: 'completed',
+            title: 'title'
         },
         label: {
             state: 'Completed'

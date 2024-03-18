@@ -12,7 +12,6 @@ import { setPageTitle } from "../../store/slices/app/appSlice";
 
 const LoginPage = () => {
     const { auth } = useSelector(state => state)
-    const { app } = useSelector(state => state)
     const dispatch = useDispatch();
     const [activeToastLoginError, setActiveToastLoginError] = useState(false)
 
