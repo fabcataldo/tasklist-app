@@ -1,13 +1,21 @@
-:host {
-    --buttonBg: black;
-    --buttonTextColor: white;
-}
+@import '../../styles/variables.module.scss';
 
 .button {
-    background-color: var(--buttonBg);
-    color: var(--buttonTextColor);
     padding: 10px;
     width: 100%;
-    border: 1px solid var(--buttonBg);
+    border: 1px solid var(--light-grey);
     border-radius: 10px;
+}
+
+.btnPrimary {
+        background-color: var(--light-grey);
+        color: var(--btnPrimaryTextColor);
+
+}
+
+.btnSecondary {
+
+        background-color: var(--btnSecondaryBg);
+        color: var(--btnSecondaryTextColor);
+
 }

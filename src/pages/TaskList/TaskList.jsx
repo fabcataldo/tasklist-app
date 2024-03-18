@@ -1,16 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import styles from './TodoList.module.scss'
+import styles from './TaskList.module.scss'
 import List from './components/List/List'
 import Filters from './filters/Filters';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import commonStyles from '../../styles/CommonStyles.module.scss'
+import { commonStringValues } from '../../utils/commonStringValues';
 
-const TodoList = () => {
+const TaskList = () => {
     const { todos } = useSelector((state) => state.todos)
     const [currentTodos, setCurrentTodos] = useState(todos)
     const navigate = useNavigate();
+
+    useEffect(()=> {
+        setCurrentTodos(todos)
+
+        console.log('todos')
+        console.log(todos)
+    }, [todos])
 
     const goToNewTask = () => {
         navigate('/add-update-todo')
@@ -18,8 +26,8 @@ const TodoList = () => {
 
     return (
         <div>
-            <div className={commonStyles.flexCenterCenter}>
-                <Button type='secondary' handleClick={() => goToNewTask()} label='Add new task'></Button>
+            <div className={`${commonStyles.flexCenterCenter} ${styles.addButtonContainer}`}>
+                <Button type={commonStringValues.btn.type.secondary} handleClick={() => goToNewTask()} label={commonStringValues.btn.addNewTask}></Button>
             </div>
             <div>
                 <Filters 
@@ -36,4 +44,4 @@ const TodoList = () => {
     )
 }
 
-export default TodoList
+export default TaskList

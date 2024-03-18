@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './LeftBar.module.scss'
 import Button from '../Button/Button';
 import {logout} from '../../store/slices/auth'
+import { commonStringValues } from '../../utils/commonStringValues';
 
 const LeftBar = () => {
     const { auth } = useSelector(state => state)
@@ -21,7 +22,7 @@ const LeftBar = () => {
                     : null}
 
             <nav className={styles.mainNav}>
-                <Button handleClick={doLogout} label='Close session'></Button>
+                <Button type={commonStringValues.btn.type.secondary} handleClick={doLogout} label='Close session'></Button>
             </nav>
         </header>
     )

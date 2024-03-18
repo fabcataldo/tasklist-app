@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import TodoList from '../pages/TodoList/TodoList';
+import TaskList from '../pages/TaskList/TaskList';
 import TodoDetail from '../pages/TodoDetail/TodoDetail';
 import Sidebar from '../components/layout/Sidebar';
 import TodoAddUpdate from '../pages/TodoAddUpdate/TodoAddUpdate';
@@ -10,7 +10,7 @@ export const TaskListRoutes = () => {
       <div className="container">
         <Sidebar></Sidebar>
         <Routes>
-          <Route path='/todos' element={<TodoList></TodoList>}></Route>
+          <Route path='/todos' element={<TaskList></TaskList>}></Route>
           <Route path='/todo' element={<TodoDetail></TodoDetail>}></Route>
           <Route path='/add-update-todo' element={<TodoAddUpdate></TodoAddUpdate>}></Route>
 

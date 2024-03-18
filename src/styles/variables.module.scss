@@ -1,7 +1,11 @@
-$fontColor: 'black';
-$leftBarColor: 'white';
-$appHeaderBg: 'grey';
-$btnPrimaryBg: '#7D7D7D';
-$btnPrimaryTextColor: 'white';
-$btnSecondaryBg: 'white';
-$btnSecondaryTextColor: 'black';
+:root {
+    --fontColor: black;
+    --leftBarColor: white;
+    --grey: grey;
+    --light-grey: #7D7D7D;
+    --btnPrimaryTextColor: white;
+    --btnSecondaryBg: white;
+    --btnSecondaryTextColor: black;
+    --customRed: #E00000;
+    --white: white;
+}

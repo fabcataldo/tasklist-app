@@ -32,7 +32,9 @@ const TodoAddUpdate = () => {
         if (currentTodo !== null) {
             dispatch(updateTodo(payload))
         } else {
-            dispatch(addTodo(payload))
+            if(payload.description !== null){
+                dispatch(addTodo(payload))
+            }
         }
         
         if (todos.error === null) {

@@ -39,17 +39,3 @@
         height: 100%;
     }
 }
-
-.btnPrimary {
-    Button {
-        --buttonBg: var($btnPrimaryBg);
-        --buttonTextColor: var($btnPrimaryTextColor);
-    } 
-}
-
-.btnSecondary {
-    Button {
-        --buttonBg: var($btnSecondaryBg);
-        --buttonTextColor: var($btnSecondaryTextColor);
-    }
-}

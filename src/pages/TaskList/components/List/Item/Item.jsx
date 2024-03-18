@@ -8,6 +8,7 @@ import commonStyles from '../../../../../styles/CommonStyles.module.scss';
 import deleteIcon from '../../../../../assets/imgs/delete.png';
 import editIcon from '../../../../../assets/imgs/edit.png';
 import Button from '../../../../../components/Button/Button';
+import { commonStringValues } from '../../../../../utils/commonStringValues';
 
 const ListItem = ({ item }) => {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ const ListItem = ({ item }) => {
                     </div>
                     
                     <div className={styles.subItem}>
-                        <Button type='secondary' handleClick={() => goToDetail(item)} label='See detail'></Button>
+                        <Button type={commonStringValues.btn.type.secondary} handleClick={() => goToDetail(item)} label='See detail'></Button>
                     </div>
 
                     <div className={`${styles.subItem} ${styles.actionButtons}`}>

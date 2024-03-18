@@ -1,6 +1,7 @@
 import Button from "../../../components/Button/Button"
 import styles from './Filters.module.scss'
 import commonStyles from '../../../styles/CommonStyles.module.scss'
+import { commonStringValues } from "../../../utils/commonStringValues"
 
 const Filters = ({ setCurrentTodos, currentTodos, origTodos }) => {
     const filterByState = (completed) => {
@@ -29,13 +30,25 @@ const Filters = ({ setCurrentTodos, currentTodos, origTodos }) => {
                     <div>Order by</div>
                     <div>
                         <div className={styles.buttonContainer}>
-                            <Button type='secondary' label='Date (asc)' handleClick={() => orderByDate(true)}></Button>
+                            <Button
+                                type={commonStringValues.btn.type.secondary}
+                                label={commonStringValues.btn.filtersOrderers.orderBy.asc}
+                                handleClick={() => orderByDate(true)}>
+                            </Button>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <Button type='secondary' label='Date (desc)' handleClick={() => orderByDate(false)}></Button>
+                            <Button
+                                type={commonStringValues.btn.type.secondary}
+                                label={commonStringValues.btn.filtersOrderers.orderBy.desc}
+                                handleClick={() => orderByDate(false)}>
+                            </Button>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <Button type='secondary' label='Description' handleClick={orderByDescription}></Button>
+                            <Button
+                                type={commonStringValues.btn.type.secondary}
+                                label={commonStringValues.btn.filtersOrderers.orderBy.description}
+                                handleClick={orderByDescription}>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -43,10 +56,18 @@ const Filters = ({ setCurrentTodos, currentTodos, origTodos }) => {
                     <div>Filter by</div>
                     <div>
                         <div className={styles.buttonContainer}>
-                            <Button type='secondary' label='Completed' handleClick={() => filterByState(true)}></Button>
+                            <Button
+                                type={commonStringValues.btn.type.secondary}
+                                label={commonStringValues.btn.filtersOrderers.filterBy.completed}
+                                handleClick={() => filterByState(true)}>
+                            </Button>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <Button type='secondary' label='Incompleted' handleClick={() => filterByState(false)}></Button>
+                            <Button
+                                type={commonStringValues.btn.type.secondary}
+                                label={commonStringValues.btn.filtersOrderers.filterBy.incompleted}
+                                handleClick={() => filterByState(false)}>
+                            </Button>
                         </div>
                     </div>
                 </div>

@@ -24,9 +24,9 @@ export const DummyRepository = {
             }
         })
     },
-    addTodo: (todo) => {
+    addTodo: (currentTodos, todo) => {
         return new Promise((resolve, reject) => {
-            const todosTmp = [...todos.data]
+            const todosTmp = [...currentTodos]
             todosTmp.push(todo)
             resolve({
                 ok: true,
@@ -35,15 +35,15 @@ export const DummyRepository = {
             })
         })
     },
-    updateStateTodo: (uuid, newState) => {
+    updateStateTodo: (currentTodos, payload) => {
         return new Promise((resolve, reject) => {
-            const todoInTodosIdx = todos.data.findIndex(todo => todo.uuid === uuid)
+            const todoInTodosIdx = currentTodos.findIndex(todo => todo.uuid === payload.uuid)
             if (todoInTodosIdx !== -1) {
-                const todoInTodos = {...todos.data[todoInTodosIdx]}
-                todoInTodos.completed = newState
+                const todoInTodos = {...currentTodos[todoInTodosIdx]}
+                todoInTodos.completed = payload.newState
                 resolve({
                     ok: true,
-                    data: todoInTodos,
+                    data: currentTodos,
                     error: null
                 })
             } else {
@@ -55,14 +55,17 @@ export const DummyRepository = {
             }
         })
     },
-    updateTodo: (todoUpdated) => {
+    updateTodo: (currentTodos, todoUpdated) => {
         return new Promise((resolve, reject) => {
-            const todoInTodosIdx = todos.data.findIndex(todo => todo.uuid === todoUpdated.uuid)
+            const todoInTodosIdx = currentTodos.findIndex(todo => todo.uuid === todoUpdated.uuid)
             if (todoInTodosIdx !== -1) {
-                const todoInTodos = {...todos.data[todoInTodosIdx]}
+                const todoInTodos = {...currentTodos[todoInTodosIdx]}
                 todoInTodos.description = todoUpdated.description
                 todoInTodos.dueDate = todoUpdated.dueDate
                 todoInTodos.completed = todoUpdated.completed
+
+                console.log('todo in todos')
+                console.log(todoInTodos)
                 resolve({
                     ok: true,
                     data: todoInTodos,
@@ -77,11 +80,11 @@ export const DummyRepository = {
             }
         })
     },
-    deleteTodo: (uuid) => {
+    deleteTodo: (currentTodos, uuid) => {
         return new Promise((resolve, reject) => {
-            const todoInTodosIdx = todos.data.findIndex(todo => todo.uuid === uuid)
+            const todoInTodosIdx = currentTodos.findIndex(todo => todo.uuid === uuid)
             if (todoInTodosIdx !== -1) {
-                const todosTmp = [...todos.data]
+                const todosTmp = [...currentTodos]
                 todosTmp.splice(todoInTodosIdx, 1)
                 resolve({
                     ok: true,

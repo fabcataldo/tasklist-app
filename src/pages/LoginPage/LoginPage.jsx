@@ -70,7 +70,7 @@ const LoginPage = () => {
                         ></Input>
                     </div>
                     <div>
-                        <Button type='primary' handleClick={onSubmit} label={commonStringValues.btn.login}></Button>
+                        <Button type={commonStringValues.btn.type.primary} handleClick={onSubmit} label={commonStringValues.btn.login}></Button>
                     </div>
                 </div>
             </div>

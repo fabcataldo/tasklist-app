@@ -9,15 +9,28 @@ import SwitchSlider from '../../../../components/SwitchSlider/SwitchSlider';
 import { commonStringValues } from '../../../../utils/commonStringValues';
 import Input from '../../../../components/Input/Input';
 import { v4 as uuidv4 } from 'uuid';
+import FormMsgError from '../../../../components/FormMsgError/FormMsgError';
+import { useState } from 'react';
 registerLocale("es", es);
 
 const Form = ({ todo, onSubmit }) => {
     const { onInputChange, formState } = useForm({
         uuid: todo ? todo.uuid : uuidv4(),
         description: todo ? todo.description : '',
-        dueDate: todo ? todo.dueDate : new Date().toISOString().slice(0,9),
-        completed: todo ? todo.completed : ''
+        dueDate: todo ? todo.dueDate : new Date().toISOString(),
+        completed: todo ? todo.completed : false
     })
+
+    const [isMandatoryFieldEmpty, setIsMandatoryFieldEmpty] = useState(false)
+
+    const onSubmitting = () => {
+        setIsMandatoryFieldEmpty(!formState.description)
+        console.log(!formState.description)
+        console.log(isMandatoryFieldEmpty)
+        if (!isMandatoryFieldEmpty && formState.description){
+            onSubmit(formState)
+        }
+    }
 
     return (
         <>
@@ -29,7 +42,7 @@ const Form = ({ todo, onSubmit }) => {
                         onChange={(value) => {
                             onInputChange({
                                 target: {
-                                    name: 'dueDate', 
+                                    name: commonStringValues.todo.data.dueDate, 
                                     value: new Date(value).toISOString().slice(0,10)
                                 }
                             })
@@ -42,18 +55,24 @@ const Form = ({ todo, onSubmit }) => {
                     <Input
                         value={formState.description}
                         placeholder={commonStringValues.form.descriptionPlaceholder}
-                        name='description'
+                        name={commonStringValues.todo.data.description}
                         onChange={onInputChange}
                     ></Input>
+                    <div>
+                        {
+                            !formState.description && isMandatoryFieldEmpty &&
+                            <FormMsgError msg={commonStringValues.msg.error}></FormMsgError>
+                        }
+                    </div>
                 </div>
                 <div className={formStyles.containerInput}>
                     <SwitchSlider
                         value={formState.completed}
-                        label='Completed'
+                        label={commonStringValues.todo.label.state}
                         setValue={(value) => {
                             onInputChange({
                                 target: {
-                                    name: 'completed', 
+                                    name: commonStringValues.todo.data.state, 
                                     value: value
                                 }
                             })
@@ -61,7 +80,10 @@ const Form = ({ todo, onSubmit }) => {
                     ></SwitchSlider>
                 </div>
                 <div>
-                    <Button type='primary' handleClick={() => onSubmit(formState)} label='Save'></Button>
+                    <Button
+                        type='primary'
+                        handleClick={onSubmitting} label='Save'>
+                    </Button>
                 </div>
             </div>
 

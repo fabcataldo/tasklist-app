@@ -3,7 +3,7 @@
 .appHeader {
     display: flex;
     justify-content: space-between;
-    background-color: var(--appHeaderBg);
+    background-color: var(--grey);
     padding: 4rem;
     flex-direction: column;
 }
@@ -25,9 +25,4 @@
 
 .mainNav a:first-of-type {
     margin-right: 2rem;
-}
-
-Button {
-    --buttonBg: #7D7D7D;
-    --buttonTextColor: white;
 }
