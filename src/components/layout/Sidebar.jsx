@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import hamburguerIcon from '../../assets/imgs/hamburguericon.png'
+import hamburguerIcon from '../../assets/imgs/hamburguer-white.png'
 import arrowLeftIcon from '../../assets/imgs/arrow-left.svg'
 import styles from './Sidebar.module.scss'
 import LeftBar from './LeftBar'
