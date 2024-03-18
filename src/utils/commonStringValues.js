@@ -33,10 +33,12 @@ export const commonStringValues = {
         type: {
             primary: 'primary',
             secondary: 'secondary',
-        }
+        },
+        closeSession: 'Close session'
     },
     msg: {
-        error: 'Title is mandatory'
+        error: 'Title is mandatory',
+        sidebarUserHi: 'Hello'
     },
     todo: {
         data: {
